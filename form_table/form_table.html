@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width,initial scale=1.0" />
+    <title>Form_Table</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        table {
+           border: 1px solid lightgray;
+            /* width: 500px; */
+            height: 250px;
+            border-collapse: collapse;
+        }
+        th, td, tr {
+            /* text-align: center; */
+            border: 1px dotted;
+        }
+        tr:nth-child(even)
+        {
+            background-color: #e8e8e8;
+        }
+       
+
+    </style>
+    </head>
+    <body>
+        <h3 style=" color: white; margin-left: 200px;">Fill the application form below and submit.</h3>
+    <table align="center">
+        
+       <form id="register" method="post" action=""> 
+           
+           <tr>
+               <td><label><b>Name*</b></label> <br>
+                 <input type="text" name="name" id="fname" placeholder="First Name"> 
+               <input type="text" name="lname" id="name" placeholder="Last Name">
+               </td>
+               <td><label> <b>E-Mail Address*</b></label> <br>
+              <input type="text" name="mail" id="mail" placeholder="Mail@example.com"> 
+           </td>
+               <td> <label><b>City*</b></label> <br>
+               <input type="text" name="City" id="city" placeholder="CITY"> 
+                       <select name="city name" id="city" style="color: gray;">
+                            <option>Select City</option>
+    <option value="Dehradun">Dehradun</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Saharanpur">Saharanpur</option>
+    <option value="Amabala">Ambala</option>
+    <option value="Yamunanangar">Yamunanagar</option>
+    <option value="Jagadhari">Jgadhari</option>
+    <option value="Nainital">Nainital</option>
+               </select>
+     </td>
+              <td> <label> <b> Phone Number* </b></label> <br> 
+               <input type="text" name="phoneNo" id="phoneNo" placeholder="Phone Number"> 
+               </td>
+           </tr>
+            </form>
+      
+        </table>
+    </body>
+</html>
