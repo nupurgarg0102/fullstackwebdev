@@ -1,86 +1,133 @@
-<!DOCTYPE html>
+<?php
+    
+    if(isset(($_POST['Submit']))){
+        $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $city = $_POST['city'];
+    $course = $_POST['course'];
+    $interest = $_POST['interests'];
+      
+                echo "
+            <table border='1'>
+            <tr>
+            <td colspan='8'>FORM DATA</td>
+              </tr>
+            <tr>
+            <th>Name</th>
+			<th>Email</th>
+			<th>Contact</th>
+            <th>City</th>
+            <th>Course</th>
+            <th colspan=3>Interests</th>
+            </tr>
+            <tr>
+            <td>$name</td>
+            <td>$email</td>
+            <td>$contact</td>
+            <td>$city</td>
+            <td>$course</td>
+            <td>$interest[0]</td>
+            <td>$interest[1]</td>
+            <td>$interest[2]</td>
+     </tr></table>";
+			}
+
+?>
+
+
+
 <html>
 <head>
+<script>
+function validateForm() {
+var name = document.forms["FORM"]["name"].value;
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+      
+   var contact = document.forms["FORM"]["contact"].value;
+  if (contact.length!=10) {
+    alert("length must be 10");
+    return false;
+  }
+  var interests =document.getElementsByTagName("input");
+  var c=0;
+  for(var i=0;i<interests.length;++i){
+      if(interests[i].type=="checkbox" && interests[i].checked==true)
+      {
+          c++;
+      }
+  }
+    if(c<3 || c>5)
+     {alert("At least 3 interests and at max 5 interests");return false;}
+    return true;
+  
+}
+</script>
+ 
+ <style>
+ * {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+body {
+  background-color: cadetblue;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  margin: 100px;
+}
 
-    <meta charset="UTF-8">
-    <meta name ="viewport" content="width=device-width,initial scale=1.0" />
-    <title>Form_Table</title>
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-        table {
-           border: 1px solid lightgray;
-            /* width: 500px; */
-            height: 250px;
-            border-collapse: collapse;
-        }
-        th, td, tr {
-            /* text-align: center; */
-            border: 1px dotted;
-        }
-        tr:nth-child(even)
-        {
-            background-color: #e8e8e8;
-        }
-       
+label {
+  margin-left: 10px;
+  width: 240px;
+  display: inline-block;
+}
+input {
+  padding: 10px;
+}
+div {
+  margin-left: 255px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-    </style>
-    </head>
+ </style>
+    
+</head>
     <body>
-        <h3 style=" color: white; margin-left: 200px;">Fill the application form below and submit.</h3>
-    <table align="center">
-        
-       <form id="register" method="post" action=""> 
-           
-           <tr>
-              <td>
-                 <input type="text" name="name" id="name" placeholder="Name"> 
-                
-               
-              </td>
-              <td>
-                   <input type="text" name="email" id="email" placeholder="Mail@example.com">
-                   
-              </td>
-              <td>
-                  <input type="text" name="contact" id="contact" placeholder="+91 0000000000">
-                  
-              </td>
-              <td>
-                  <select name="city" id="city" style="color: gray;">
-                            <option>Select City</option>
-    <option value="Dehradun">Dehradun</option>
-    <option value="Delhi">Delhi</option>
-    <option value="Saharanpur">Saharanpur</option>
-    <option value="Amabala">Ambala</option>
-    <option value="Yamunanangar">Yamunanagar</option>
-    <option value="Jagadhari">Jgadhari</option>
-    <option value="Nainital">Nainital</option>
-               </select>
-              
+       <h3> Fill the application form below and submit. </h3> <br>
+        <form name="FORM" action="form.php" onsubmit="return validateForm()" method="post" > 
+        <label><b>Name*</b></label>
+        <input type="text" name="name"  placeholder="Name" required> <br> <br>
+        <label> <b>E-Mail Address*</b></label>
+        <input type="email" name="email"  placeholder="Mail@example.com" required> <br> <br>
+        <label> <b>Contact*</b></label> 
+        <input type="text" name="contact" placeholder="+91 0000000000" required>  <br> <br>
+        <label><b>City*</b></label>
+        <select name="city" id="city" style="color: gray;" required>
+        <option>Select City</option>
+        <option value="Dehradun">Dehradun</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Saharanpur">Saharanpur</option>
+        <option value="Amabala">Ambala</option>
+        <option value="Yamunanangar">Yamunanagar</option>
+        <option value="Jagadhari">Jgadhari</option>
+        <option value="Nainital">Nainital</option>
+        </select>  <br> <br>
 
-              </td>
-              <td>
-  <input type="text" name="course" id="course" placeholder="Computer Science"> 
-              </td>
-              <td>
-<input type="checkbox" id="h1" name="interests[]" value="Solving Puzzels">
-<label for="h1"> Solving Puzzels</label><br>
-<input type="checkbox" id="h1" name="interests[]" value="Playing Chess">
-<label for="h2"> Playing Chess</label><br>
-<input type="checkbox" id="h1" name="interests[]" value="Sports">
-<label for="h3">Sports</label><br>
-<input type="checkbox" id="h1" name="interests[]" value="Coding">
-<label for="h4"> Coding</label><br>
-<input type="checkbox" id="h1" name="interests[]" value="Reading">
-<label for="h5">Reading</label><br>
-
-              </td>
-              <td colspan=6><input type="submit" Name="submit" value="Submit"><br></td>
-          </tr>
+        <label> <b>Course*</b></label> 
+        <input type="text" name="course" id="course" placeholder="B.TECH" require>  <br> <br>
+        <label> <b>Interests*</b></label>
+        Solving Puzzels<input type="checkbox"  name="interests[]" value="Solving Puzzels">
+        Playing Chess<input type="checkbox"  name="interests[]" value="Playing Chess">
+        Sports<input type="checkbox"  name="interests[]" value="Sports">
+        Coding<input type="checkbox"  name="interests[]" value="Coding">
+        Reading<input type="checkbox" name="interests[]" value="Reading"><br> <br>
+        <div><input type="Submit" Name="Submit" value="Submit" ></div>
         </form>
-        </table>
-        
     </body>
 </html>
