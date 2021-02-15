@@ -1,6 +1,6 @@
 <?php
 include('config.php');
-$result = mysqli_query($db, "SELECT * FROM `users`"); 
+$result = mysqli_query($conn, "SELECT * FROM `users`"); 
 if($result == false) 
 { 
     echo "Invalid Query!"; 
