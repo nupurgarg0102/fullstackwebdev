@@ -12,7 +12,7 @@ $gender = $_POST['gender'];
 $email = $_POST['email'];
 $city = $_POST['city']; 
 $sqlQuery = "UPDATE `users` SET `username`='$username', `gender`='$gender', `email`='$email', `city`='$city' WHERE `id`=$id"; 
-if(mysqli_query($db, $sqlQuery)) 
+if(mysqli_query($conn, $sqlQuery)) 
 { 
 header("Location: index.php"); 
 exit();
